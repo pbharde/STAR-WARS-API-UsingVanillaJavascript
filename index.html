@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body background="./img/Star-Wars-Background-Wallpaper1.jpg" onload="myFunction()">
+  <head>
+    <title>STAR WARS API</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" />
+    <link rel="stylesheet" href="swapi.css">
+  </head>
+<header align="center">
+   <img src="./img/header.png" alt="STAR WARS" />
+</header>
+  <!-- <h1 id="character" style="color:white;"></h1> -->
+  <div class="listContainer">
+    <ul id="character" class="list"></ul>
+  </div>
+
+
+<div class="btnContainer">
+<input type="button" id="page1" class="btn" onclick="page1()" value="1" />
+<input type="button" id="page2" class="btn" onclick="page2()" value="2" />
+<input type="button" id="page3" class="btn" onclick="page3()" value="3" />
+<input type="button" id="page4" class="btn" onclick="page4()" value="4" />
+<input type="button" id="page5" class="btn" onclick="page5()" value="5" />
+<input type="button" id="page6" class="btn" onclick="page6()" value="6" />
+<input type="button" id="page7" class="btn" onclick="page7()" value="7" />
+<input type="button" id="page8" class="btn" onclick="page8()" value="8" />
+<input type="button" id="page9" class="btn" onclick="page9()" value="9" />
+</div>
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+        <ul id="vehicle" class="list"></ul>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript" src="./swapi.js"></script>
+</body>
+</html>

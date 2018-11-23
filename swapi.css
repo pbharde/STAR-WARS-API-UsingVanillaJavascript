@@ -1,0 +1,85 @@
+.list{
+      margin-top: 1%;
+      margin-left: 5%;
+      margin-right:1%;
+      float: left;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-column-gap:2em;
+      grid-row-gap:2em;
+      max-width: 100%;
+}
+
+.listContainer{
+  margin-top: 4%;
+  margin-left: 5%;
+  margin-right: 5%;
+  color: #ffffff;
+}
+
+.btnContainer{
+  margin-top: 35%;
+  margin-left: 40%;
+}
+.btnContainer .btn{
+  margin-left: 1%;
+  margin right:1%;
+}
+
+ul{
+  list-style-type: none;
+}
+
+.button{
+      background-color: #FFD700;
+      color: black;
+      text-align: center;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      height: 30px;
+      width:140px;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #FFD700;
+    margin-top: 15%;
+    margin-left: 35%;
+    padding: 2px;
+    border: 2px solid #ffffff;
+    width: 30%;
+    height: 15%;
+    font-size: 16px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
