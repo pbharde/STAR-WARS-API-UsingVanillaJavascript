@@ -1,3 +1,9 @@
+h1{
+  color: #ffffff;
+  font-size: 40px;
+  margin-left: 37.5%;
+}
+
 .header{
     margin-left: 38%;
   }
@@ -19,7 +25,7 @@
 }
 
 .listContainer{
-  margin-top: 4%;
+  margin-top: 2%;
   margin-left: 5%;
   margin-right: 5%;
   color: #ffffff;
