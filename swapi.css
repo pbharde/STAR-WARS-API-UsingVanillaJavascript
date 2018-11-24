@@ -1,5 +1,13 @@
+.header{
+    margin-left: 38%;
+  }
+
+.name{
+ font-weight: bold;
+ font-size: 20px;
+}
+
 .list{
-      margin-top: 1%;
       margin-left: 5%;
       margin-right:1%;
       float: left;
@@ -18,9 +26,10 @@
 }
 
 .btnContainer{
-  margin-top: 35%;
+  margin-top: 40%;
   margin-left: 40%;
 }
+
 .btnContainer .btn{
   margin-left: 1%;
   margin right:1%;
@@ -39,6 +48,8 @@ ul{
       cursor: pointer;
       height: 30px;
       width:140px;
+      border-style: outset;
+      border-width: 3px;
 }
 
 
@@ -55,6 +66,8 @@ ul{
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    border-style: outset;
+    border-width: 3px;
 }
 
 /* Modal Content */
@@ -65,7 +78,9 @@ ul{
     padding: 2px;
     border: 2px solid #ffffff;
     width: 30%;
-    height: 15%;
+    position: relative;
+    overflow-y: auto;
+    max-height: 400px;
     font-size: 16px;
 }
 
@@ -82,4 +97,9 @@ ul{
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+.hide{
+  display:none;
 }

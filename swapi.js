@@ -175,30 +175,33 @@ function page9() {
 }
 
 function display(data){
-  console.log(data);
-  console.log(data.results);
   for(let i=0; i<data.results.length; i++){
     let btn = document.createElement("BUTTON");
-    let characterList = "<li>" + data.results[i].name + "<br/>Gender: " + data.results[i].gender + "<br/>Height: " + data.results[i].height + "<br/>Mass: " + data.results[i].mass + "<br/>Hair Color: " + data.results[i].hair_color + "<br/>Skin Color: " + data.results[i].skin_color + "<br/>Eye Color: " + data.results[i].eye_color + "<br/>Birth Year: " + data.results[i].birth_year + "<button class='button' onClick='openModal()'>View Vehicle</button></li>";
+    let characterList = "<li><p class='hide'>"+ data.results[i].url +"</p><p class='name'>" + data.results[i].name + "</p>Gender: " + data.results[i].gender + "<br/>Height: " + data.results[i].height + "<br/>Mass: " + data.results[i].mass + "<br/>Hair Color: " + data.results[i].hair_color + "<br/>Skin Color: " + data.results[i].skin_color + "<br/>Eye Color: " + data.results[i].eye_color + "<br/>Birth Year: " + data.results[i].birth_year + "<button class='button' onClick='openModal(this)'>View Vehicle</button></li>";
     character.innerHTML += characterList;
   }
 }
 
-function openModal(x){
-//  modal.style.display = "block";
-  //let vehicleList = "<li>" + data.results[0].name + "</li>";
-  //vehicle.innerHTML += vehicleList;
-  //let item = this;
-//  let parent =item.parentNode;
-console.log(x);
-  alert(x);
-
-  // console.log("response");
-  // axios.get('https://swapi.co/api/people').then(function(response){
-  //   alert(response.data.results[0].name);
-  // })
-
-}
+function openModal(char){
+let selectedCharacter = char.parentElement.firstChild.firstChild;
+modal.style.display = "block";
+axios.get(selectedCharacter.data).then(function(response){
+        let vehicleList = "<li>" + response.data.name + "'s Vehicle:<br/><br/></li>";
+        vehicle.innerHTML = vehicleList;
+        if(response.data.vehicles.length==0){
+          let vehicleList = "<li> Vehicle information not available.</li>";
+          vehicle.innerHTML += vehicleList;
+        }
+        else{
+          for(let j=0; j<response.data.vehicles.length; j++){
+              axios.get(response.data.vehicles[j]).then(function(responseVeh){
+                let vehicleList = "<li>" + responseVeh.data.name + "</li>";
+                vehicle.innerHTML += vehicleList;
+            })
+          }
+        }
+})
+    }
 
 span.onclick = function() {
     modal.style.display = "none";
