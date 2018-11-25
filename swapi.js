@@ -1,3 +1,5 @@
+let current = document.getElementsByClassName("active");
+let view = document.querySelector("#character");
 let character = document.getElementById('character');
 let vehicle = document.getElementById('vehicle');
 let modal = document.getElementById('myModal');
@@ -11,6 +13,7 @@ let btn6 = document.getElementById('page6');
 let btn7 = document.getElementById('page7');
 let btn8 = document.getElementById('page8');
 let btn9 = document.getElementById('page9');
+var defaultView = "grid";
 
 function myFunction() {
     axios.get('https://swapi.co/api/people').then(function(response){
@@ -25,6 +28,8 @@ function myFunction() {
     btn7.style.backgroundColor = "";
     btn8.style.backgroundColor = "";
     btn9.style.backgroundColor = "";
+    console.log(current[0].lastChild);
+    console.log(current[1].lastChild);
 }
 
 function page1() {
@@ -32,7 +37,6 @@ function page1() {
     axios.get('https://swapi.co/api/people').then(function(response){
       display(response.data);
     })
-
 
     btn1.style.backgroundColor = "#FFD700";
     btn2.style.backgroundColor = "";
@@ -43,13 +47,17 @@ function page1() {
     btn7.style.backgroundColor = "";
     btn8.style.backgroundColor = "";
     btn9.style.backgroundColor = "";
-}
+    console.log(current[0].lastChild.data);
+    if(current[0].lastChild.data===List)
+    listView();
+    }
 
 function page2() {
   character.innerHTML = "";
     axios.get('https://swapi.co/api/people/?page=2').then(function(response){
       display(response.data);
     })
+
 
     btn1.style.backgroundColor = "";
     btn2.style.backgroundColor = "#FFD700";
@@ -60,6 +68,8 @@ function page2() {
     btn7.style.backgroundColor = "";
     btn8.style.backgroundColor = "";
     btn9.style.backgroundColor = "";
+    if(current[0].lastChild.data===List)
+    listView();
 }
 
 function page3() {
@@ -177,7 +187,7 @@ function page9() {
 function display(data){
   for(let i=0; i<data.results.length; i++){
     let btn = document.createElement("BUTTON");
-    let characterList = "<li><p class='hide'>"+ data.results[i].url +"</p><p class='name'>" + data.results[i].name + "</p>Gender: " + data.results[i].gender + "<br/>Height: " + data.results[i].height + "<br/>Mass: " + data.results[i].mass + "<br/>Hair Color: " + data.results[i].hair_color + "<br/>Skin Color: " + data.results[i].skin_color + "<br/>Eye Color: " + data.results[i].eye_color + "<br/>Birth Year: " + data.results[i].birth_year + "<button class='button' onClick='openModal(this)'>View Vehicle</button></li>";
+    let characterList = "<li id='info'><div class='hide'>"+ data.results[i].url +"</div><div class='name'>" + data.results[i].name + "</div><div>Gender: " + data.results[i].gender + "</div><div>Height: " + data.results[i].height + "</div><div>Mass: " + data.results[i].mass + "</div><div>Hair Color: " + data.results[i].hair_color + "</div><div>Skin Color: " + data.results[i].skin_color + "</div><div>Eye Color: " + data.results[i].eye_color + "</div><div>Birth Year: " + data.results[i].birth_year + "</div><button class='button' onClick='openModal(this)' <div>View Vehicle</button></li>";
     character.innerHTML += characterList;
   }
 }
@@ -188,7 +198,7 @@ modal.style.display = "block";
 axios.get(selectedCharacter.data).then(function(response){
         let vehicleList = "<li>" + response.data.name + "'s Vehicle:<br/><br/></li>";
         vehicle.innerHTML = vehicleList;
-        if(response.data.vehicles.length==0){
+         if(response.data.vehicles.length==0){
           let vehicleList = "<li> Vehicle information not available.</li>";
           vehicle.innerHTML += vehicleList;
         }
@@ -213,3 +223,38 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+
+// List View
+function listView(data) {
+  view.classList.remove('grid');
+  view.classList.add('list');
+  console.log(view.children.length);
+  for(let i=0; i<view.children.length; i++){
+    view.children[i].classList.remove('gridViewApp');
+    view.children[i].classList.add('listViewApp');
+  }
+}
+// Grid View1
+function gridView() {
+  view.classList.remove('list');
+  view.classList.add('grid');
+  for(let i=0; i<view.children.length; i++){
+    //view.children[i].classList.remove('listViewApp');
+    view.children[i].classList.add('gridViewApp')
+  }
+  }
+
+
+
+/* Optional: Add active class to the current button (highlight it) */
+var container = document.getElementById("viewBtnContainer");
+var btns = container.getElementsByClassName("viewBtn");
+var button = container.getElementsByClassName("button");
+
+  for (let i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function(){
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+      });
+  }
