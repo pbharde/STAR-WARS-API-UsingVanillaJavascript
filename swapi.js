@@ -28,8 +28,6 @@ function myFunction() {
     btn7.style.backgroundColor = "";
     btn8.style.backgroundColor = "";
     btn9.style.backgroundColor = "";
-    console.log(current[0].lastChild);
-    console.log(current[1].lastChild);
 }
 
 function page1() {
@@ -47,9 +45,6 @@ function page1() {
     btn7.style.backgroundColor = "";
     btn8.style.backgroundColor = "";
     btn9.style.backgroundColor = "";
-    console.log(current[0].lastChild.data);
-    if(current[0].lastChild.data===List)
-    listView();
     }
 
 function page2() {
@@ -68,9 +63,7 @@ function page2() {
     btn7.style.backgroundColor = "";
     btn8.style.backgroundColor = "";
     btn9.style.backgroundColor = "";
-    if(current[0].lastChild.data===List)
-    listView();
-}
+    }
 
 function page3() {
   character.innerHTML = "";
@@ -229,20 +222,20 @@ window.onclick = function(event) {
 function listView(data) {
   view.classList.remove('grid');
   view.classList.add('list');
-  console.log(view.children.length);
-  for(let i=0; i<view.children.length; i++){
-    view.children[i].classList.remove('gridViewApp');
-    view.children[i].classList.add('listViewApp');
-  }
+// console.log(view.children.length);
+// var info = document.getElementById("info");
+// console.log(info.innerHTML);
+// if(info.innerHTML.includes("Gender: ") && info.innerHTML.includes("Height: ") && info.innerHTML.includes("Mass: ") && info.innerHTML.includes("Hair Color: ") && info.innerHTML.includes("Skin Color: ") && info.innerHTML.includes("Eye Color: ") && info.innerHTML.includes("Birth Year: ")){
+//   for(let i=0; i<view.children.length;i++){
+//     console.log(view.children[i].hasOwnProperty("Gender: "));
+//   }
+// }
+
 }
 // Grid View1
 function gridView() {
   view.classList.remove('list');
   view.classList.add('grid');
-  for(let i=0; i<view.children.length; i++){
-    //view.children[i].classList.remove('listViewApp');
-    view.children[i].classList.add('gridViewApp')
-  }
   }
 
 
